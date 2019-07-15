@@ -1,0 +1,49 @@
+html:
+
+HTML 标题（Heading）是通过<h1> - <h6> 标签来定义的.
+<h1>这是一个标题</h1>
+
+HTML 段落是通过标签 <p> 来定义的.
+<p>这是一个段落。</p>
+
+HTML 链接是通过标签 <a> 来定义的.
+<a href="http://www.runoob.com">这是一个链接</a>
+
+HTML 图像是通过标签 <img> 来定义的.
+<img src="/images/logo.png" width="258" height="39" />
+
+<iframe>嵌入其他网页，能耗高，安全性差
+ 包含属性： name ：  规定 <iframe> 的名称。
+        width： 规定 <iframe> 的宽度。
+        height ：规定 <iframe> 的高度。
+        src ：规定在 <iframe> 中显示的文档的 URL。
+        frameborder ： 规定是否显示 <iframe> 周围的边框。 (0为无边框，1位有边框)。
+        align ：　 规定如何根据周围的元素来对齐 <iframe>。　(left,right,top,middle,bottom)。
+        scrolling ： 规定是否在 <iframe> 中显示滚动条。 (yes,no,auto)
+
+
+文本格式化
+<hr> 标签在 HTML 页面中创建水平线。
+<br> 标签在 HTML 页面中创建换行
+<!-- 这是一个注释 --> 注释
+<b>加粗</b>
+<strong>加粗</strong>
+<i>斜体</i>
+<em>斜体</em>
+<small>缩小</small>
+<big>放大</big>
+<code>计算机输出</code>
+<kbd>键盘输入</kbd>
+<tt>打字机文本</tt>
+<samp>计算机代码样本</samp>
+<var>计算机变量</var>
+<ins>	定义插入字
+<del>	定义删除字
+
+
+
+
+
+
+
+

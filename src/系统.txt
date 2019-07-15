@@ -1,0 +1,54 @@
+更换apt源：
+sudo mv /etc/apt/sources.list /etc/apt/sources.list.old
+sudo vim /etc/apt/sources.list
+
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse 
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse 
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse 
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse 
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse 
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse 
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse 
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse 
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse 
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+
+sudo apt-get update
+sudo apt-get upgrade
+
+
+安装pycharm
+cd Downloads/pycharm-2017.1.4/bin
+sh ./pycharm.sh
+
+安装python
+
+显示Python代替版本信息
+update-alternatives --list python 
+
+安装google
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt-get install libxss1 libgconf2-4 libappindicator1 libindicator7
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+如何在Ubuntu 16.04中安装Google Chrome浏览器
+
+update-alternatives --install /usr/bin/python python /usr/bin/python2.7 12
+
+sudo update-alternatives --config python
+
+安装pgadmin3
+sudo apt-get install pgadmin3
+
+
+Ubuntu 16.04无法安装第三方deb软件的解决方法
+首先，我们安装gdebi
+sudo apt install gdebi-core
+安装好gdebi以后，从终端进入到待安装软件包所在目录，使用gdebi进行安装即可，如
+sudo gdebi netease-cloud-music_1.0.0_amd64_ubuntu16.04.deb
+
+安装postgreSQL10
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list'
+sudo apt update
+sudo apt-get install postgresql-10

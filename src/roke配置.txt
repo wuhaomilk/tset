@@ -1,0 +1,4 @@
+
+cp /usr/lib/libluya-navi.so.bak /usr/lib/libluya-navi.so 
+stop NaviServer
+starting 'NaviServer'

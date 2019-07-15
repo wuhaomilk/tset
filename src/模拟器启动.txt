@@ -1,0 +1,14 @@
+1.拉代码后重新编译
+. build/envsetup.sh 
+lunch 
+选择4.full_x86-eng
+make -j8  或者 make libluya-navi snod -j8
+
+repo init -u ssh://igerrit.storm:29418/Src/iAutoPlatform/iAuto3/manifest.git -b roke/master -m navi.xml
+
+lxc start --data /home/xxx/sdcard
+拉代码
+cd roke_daily/framework/service/navi/src/search/luya
+git pull origin
+git pull ssh://wangjian@igerrit.storm:29418/Src/18Model/18jtacs/framework/navi3.0/search/luya refs/changes/87/479087/1
+

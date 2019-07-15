@@ -1,0 +1,50 @@
+1.使用Apache Utilities创建密码文件
+sudo apt-get update
+sudo apt-get install apache2-utils
+
+sudo htpasswd -c /etc/nginx/.htpasswd sammy
+cat /etc/nginx/.htpasswd
+
+
+wuhao:$apr1$9S.acCMR$fzK3TYkqmjvfNE8/XfOOC.
+https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-nginx-on-ubuntu-14-04
+https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/
+https://serverfault.com/questions/371907/can-you-pass-user-pass-for-http-basic-authentication-in-url-parameters
+ 
+2.curl 操作
+curl -XPOST 192.168.25.69:5000/redmine/project/update -d '{"id":2,"project_name": "update","url":"http"}'
+curl -XPUT 192.168.25.69:5000/redmine/project/1 -d '{"srv_url": "http://qwqqq"}'
+curl -XDELETE 192.168.25.69:5000/redmine/project/del/2
+curl -XPOST 192.168.25.69:5000/redmine/project/add -d '{"id":"5","project_name":"test","url":"http://qwqqq.com"}'
+curl -XPOST 192.168.25.69:15000/login/ -d '{'username':"1000", "password":"123456"}'
+
+
+curl -XPOST 192.168.25.69:15000/server/update -d '{"srv_use":"iDesign","srv_git_url":"https://igitlab.iauto.com/chaiyu/Spec2DB/tree/master/koala","srv_name": "iDesign","srv_id":2,"srv_status":"启用","srv_visible":"test","srv_code":"iDesign","srv_url":"http://192.168.25.120:3000"}'
+
+
+
+
+from flask_httpauth import HTTPBasicAuth
+auth = HTTPBasicAuth()
+@auth.login_required  ：请求方法需要登录
+@auth.error_handler   ：授权失败处理
+@auth.verify_token    ：验证Token，可以自定义验证逻辑
+
+@property : 属性函数
+可以让你将一个类方法转变成一个类属性 ,使对象能像调用属性一样调用方法
+
+
+
+curl 192.168.25.69:5000/ImportProjectModel/importfile -F "file=@/home/wuhao/17cy_IF.xlsx" -H "token: 222" -v
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 

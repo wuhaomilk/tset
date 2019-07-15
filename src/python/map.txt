@@ -1,0 +1,39 @@
+1.map 关联容器（内部数据结构:红黑树）
+  1.1. map的构造函数
+   map<int,string> maphai;
+  1.2. 数据的插入 Map<int,string> mapStudent;
+   mapStudent.insert(pair<int,string>(1,"student_one"));//用insert函数插入pair数据
+   mapStudent.insert(map<int,string>::value_type (1,"student_one"));//用insert函数插入value_type数据
+   mapStudent[1] = “student_one”；//用数组方式插入数据
+  1.3.map的大小
+   Int nSize = mapStudent.size();
+  1.4 数据的查找
+  用find函数来定位数据出现位置，它返回的一个迭代器
+  1.5数据的清空与判空
+  可以用clear()函数，判定map中是否有数据可以用empty()函数
+  1.6数据的删除
+  这里要用到erase函数
+  1.7， map的基本操作函数：
+	C++ Maps是一种关联式容器，包含“关键字/值”对
+	begin() 返回指向map头部的迭代器
+	clear(） 删除所有元素
+	count() 返回指定元素出现的次数
+	empty() 如果map为空则返回true
+	end() 返回指向map末尾的迭代器
+	equal_range() 返回特殊条目的迭代器对
+	erase() 删除一个元素
+	find() 查找一个元素
+	get_allocator() 返回map的配置器
+	insert() 插入元素
+	key_comp() 返回比较元素key的函数
+	lower_bound() 返回键值>=给定元素的第一个位置
+	max_size() 返回可以容纳的最大元素个数
+	rbegin() 返回一个指向map尾部的逆向迭代器
+	rend() 返回一个指向map头部的逆向迭代器
+	size() 返回map中元素的个数
+	swap() 交换两个map
+	upper_bound() 返回键值>给定元素的第一个位置
+	value_comp() 返回比较元素value的函数
+
+
+

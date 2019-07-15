@@ -1,0 +1,134 @@
+﻿
+
+
+
+sudo add-apt-repository ppa:jonathonf/python-3.7
+
+sudo apt-get update
+
+sudo apt-get install python3.7
+
+1.注释
+# 或''' 或"""
+
+2.for letter in 'Python':     # 第一个实例
+   print '当前字母 :', letter
+   
+   
+fruits = ['banana', 'apple',  'mango']
+for index in range(len(fruits)):
+   print '当前水果 :', fruits[index]
+
+3.dir()函数
+  dir() 函数一个排好序的字符串列表，内容是一个模块里定义过的名字。
+  返回的列表容纳了在一个模块里定义的所有模块，变量和函数。
+
+  globals() 和 locals() 函数
+  根据调用地方的不同，globals() 和 locals() 函数可被用来返回全局和局部命名空间里的名字。
+
+4.python字典（Dictionary）
+  字典的每个键值 key=>value 对用冒号 : 分割，每个键值对之间用逗号 , 分割，
+  整个字典包括在花括号 {} 中 ,格式如下所示：
+  d = {key1 : value1, key2 : value2 } //键是唯一的
+
+5.python元组
+  例如：tup1 = ('physics', 'chemistry', 1997, 2000)
+6.python 列表
+  例如：list1 = ['physics', 'chemistry', 1997, 2000]
+  
+7.匿名函数lambda
+  lambda [arg1 [,arg2,.....argn]]:expression
+  
+8.Python内建了map()和reduce()函数。
+ map() 会根据提供的函数对指定序列做映射。  
+    map(function, iterable)：function --函数，iterable --一个或多个序列
+ reduce() 函数会对参数序列中元素进行累积。
+    reduce(function, iterable)：function -函数，有两个参数。iterable -可迭代对象
+  
+9.Python内建的filter()函数用于过滤序列。
+    filter()也接收一个函数和一个序列
+10.sorted()
+    sorted(iterable[, cmp[, key[, reverse]]])	
+
+
+11.对象
+  1.type()判断对象类型
+  input:type(123)
+  output:<class 'int'>
+  2.isinstance()判断class的类型
+  
+  3.使用__slots__
+  限制该class实例能添加的属性
+  
+  4.使用@property
+  
+  5.实例的变量名如果以__开头，就变成了一个私有变量（private） //注意：双下划线
+  
+12.调试
+  1.print,打印出可能出问题的变量
+  2.assert
+  3.logging
+  4.pdb
+  
+13.__init__.py 文件的作用是将文件夹变为一个Python模块, //注意：init 前后都是双下划线
+Python 中的每个模块的包中，都有__init__.py 文件。
+  
+14.装饰器
+  假如我们定义一个now()函数，希望增强函数功能，但不修改函数定义，
+  这种在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）  
+  本质上，decorator就是一个返回函数的高阶函数
+  调用装饰器，借用python中@操作符，将装饰器置于now函数定义之前
+  
+ 15.python 测试函数运行时间
+   from timeit import Timer
+   t1=Timer("test1()","from __main__ import test1")
+   print(t1.timeit(1000000))
+***********************************************************************
+virtualenv
+ 
+安装 
+pip install virtualenv
+创建项目 
+cd my_project_folder 
+virtualenv my_project
+指定 python 版本 
+virtualenv -p /usr/bin/python2.7 my_project 
+或者在环境变量配置中加入 
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+
+激活虚拟环境 
+(Linux) source my_project/bin/activate 
+
+退出环境 
+(Linux) my_project/bin/deactivate 
+*************************************************************************
+1.worksheet.write('A1', 'F') //A1单元格 写入 F
+
+2.workbook = xlsxwriter.Workbook('merge1.xlsx') //创建工作簿
+
+3.worksheet = workbook.add_worksheet()  //添加表单，没有参数默认建一张
+
+4.worksheet.merge_range('B4:D4', 'Merged Range', merge_format) 
+  //合并B4：D4单元格，填写内容Merged Range
+  //merge_format 单元格属性，例如字居中
+
+5.
+  merge_format = workbook.add_format({
+    'bold': 1,
+    'border': 1,
+    'align': 'center',
+    'valign': 'vcenter',
+    'fg_color': 'yellow'})
+6.	
+  Excel区分数据类型，如字符串，数字，空格，公式和超链接
+  write_string()
+  write_number()
+  write_blank()
+  write_formula()
+  write_datetime()
+  write_boolean()
+  write_url()
+
+7.
+  我们程序的最后一个补充是set_column()调整列'B'宽度的方法
+  workbook = xlsxwriter.Workbook(filename, {'tmpdir': '/home/user/tmp'}) //指定目录

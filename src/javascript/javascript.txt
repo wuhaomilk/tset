@@ -1,0 +1,129 @@
+1.JavaScript 对象
+ 所有事物皆对象：字符串，数组，函数，数值
+ 对象是一种特殊数据，拥有属性和方法
+
+2.比较运算符：x=5
+ 2.1（==）等于：x == 5  true; x == "5" true
+ 2.2（==）绝对等于 x === 5 true； x === "5" false
+ 
+3.data对象
+ 一个月中的某一天：1~31
+ 一周中的某一天：0~6
+ 小时的范围：0~23
+ 秒，分钟的范围：0~59
+ 月的范围：0~11
+ 
+4.array数组对象
+ 合并数组：concat
+ 将数组元素组成字符串：jion
+ 删除数组最后一个元素：pop
+ 数组末尾添加新元素：push
+ 数组元素反转：reverse
+ 删除数组第一个元素：shift
+ 从数组中选择元素：slice
+    var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+	var fruits = fruits.slice(1);    //输出"Orange", "Lemon", "Apple", "Mango"
+	var citrus = fruits.slice(1,3);   //输出"Orange", "Lemon"
+ 向数组的任意位置添加元素：splice
+ 数组转成字符串：toString
+ 在数组开头添加新元素：unshift
+ 
+5.Math对象
+ round:四舍五入取整
+ random:产生0~1之间的随机数
+ 
+6.弹窗
+ 警告框：alert
+ 确认框：confirm
+ 提示框：prompt
+
+******************************************************************
+1.javascript构造函数作为对象的模板，例如Vehicle
+  var Vehicle = function () {
+  this.price = 1000;
+  };
+
+2.new命令
+  作用：执行构造函数。返回一个实例对象
+  调用构造函数，不适用new函数，并不会生成实例对象，这时this代表全局变量
+  避免忘记使用new的方法是构造函数内部使用严格模式
+  
+3.object.create()创建实例对象
+
+4.this关键字
+  this共有特点：它总是返回一个对象，简单说this就是属性或方法当前所在的对象
+  this使用的主要场合;
+  (1)全局环境：指向顶层对象Window
+  (2)构造函数：指向实例对象
+  (3)对象的方法：指向方法运行时所在的对象
+5.this使用注意点
+  (1)避免多层使用this
+  (2)避免数组处理方法中的this
+  (3)避免回调函数使用this
+6.绑定this的方法：call,apply,bind
+  (1)call接收对象
+  (2)apply接收数组作为参数
+7.对象的继承，通过原型对象来实现
+  7.1原型对象（prototype），解决同一构造函数的多个实例之间，无法共享属性的问题
+  7.2原型链
+  7.3instanceof运算符返回一个布尔值，表示对象是否为某个构造函数的实例。
+    v instanceof Vehicle// 等同于 Vehicle.prototype.isPrototypeOf(v)
+8构造函数的继承
+  第一步是在子类的构造函数中，调用父类的构造函数。
+  第二步，是让子类的原型指向父类的原型，这样子类就可以继承父类原型。 
+  eg:// 第一步，子类继承父类的实例
+	function Rectangle() {
+	  Shape.call(this); // 调用父类构造函数
+	}  
+	// 第二步，子类继承父类的原型
+	Rectangle.prototype = Object.create(Shape.prototype);
+	Rectangle.prototype.constructor = Rectangle;
+
+*******************************************************************************************************
+1.尽量减少全局变量的使用
+  使用var对变量进行定义；使用命名空间或者即时函数等
+2.根据注释生产API文档
+  这个创意迅速被其他语言借鉴。JavaScript领域有两个非常优秀的开源工具，
+  它们是JSDoc Toolkit（http://code.google.com/p/jsdoc-toolkit/）
+  和YUIDoc（http://yuilibrary.com/projects/yuidoc）。
+3.函数声明与函数定义
+  function foo() {} //声明
+  function foo() {}；//函数表达式（定义）
+4.回调函数
+  一个函数func1()当作另一个函数func2()的参数，在某个时刻func2调用func1,我们称func1是一个回调函数
+  function func1(){}
+  function func2(func1){func1();}
+5.回调函数作用域
+  回调函数是对象的方法，不是匿名函数或全局函数，回调函数中使用this指向它所属的对象，可能出错。
+  解决方法是：传入回调函数和回调函数所属的对象
+6.延时
+  setTimeout()和setInterval()。这两个方法的参数都是回调函数。
+7.即时函数
+  一种语法模式，他会在函数定义后立即执行
+  (function () {
+	alert('watch out!');
+  }());
+8.条件初始化
+  当你知道某种条件在整个程序生命周期中都不会变化的时候，那么对这个条件的探测只做一次就很有意义
+9.配置对象
+  当函数参数过长，还有可能修改传入参数的数量，可以将它们替换成一个参数对象，我们叫它conf。
+  eg:(1)function addPerson(first, last, dob, gender, address) {...}
+        addPerson("Bruce", "Wayne", new Date(), null, null, "batman");
+		
+	(2)var conf = {
+	username: "batman",
+	first: "Bruce",
+	last: "Wayne"
+   };
+   addPerson(conf); //不需要记住参数的顺序
+
+对象创建模式**********************************************************************************
+1.命名空间模式
+  使用它，可以减少全局变量的数量，避免命名冲突
+  方法：创建一个全局对象，将所有的功能属性添加到这个对象
+2.依赖声明
+  声明就是创建一个本地变量，指向你需要用到的模块
+3.
+  
+ 
+ 

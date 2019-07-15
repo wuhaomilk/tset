@@ -1,0 +1,57 @@
+﻿http://flask-sqlalchemy.pocoo.org/2.3/
+pgAdmin数据库基本操作：
+1.q_list = db.session.query(模板名) //查询表中所有值
+
+2.db.session.rollback()  //回滚，出现错误操作，退回到未操作的状态
+
+3.q = db.session.query(ServeInfo).filter(ServeInfo.srv_id == id).first()
+  filter()条件限制函数，查询ServeInfo.srv_id == id的那条记录
+  
+4.new_serverinfo = ServeInfo(**request_data)
+  db.session.add(new_serverinfo)
+  db.session.commit()
+  将接受到的数据（request_data）转换为数据库需要的格式（new_serverinfo）
+  然后执行添加语句
+  commit是写入数据库操作
+
+5.db.session.query(ServeInfo).filter(ServeInfo.srv_id == id).delete()  //删除操作
+  db.session.commit()
+
+6.db.session.query(ServeInfo).filter(ServeInfo.srv_id == id).update(request_data) //更新操作
+  db.session.commit()
+
+http://www.pythondoc.com/flask-sqlalchemy/models.html //数据库模板建立
+
+
+
+初始化：
+db = SQLAlchemy()
+db.init_app(app)
+配置：
+# SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:pset123456@192.168.25.88/inavi_db'
+SQLALCHEMY_DATABASE_URI = 'sqlite:////home/wuhao/workspace/test/Spec2DB/iNavi/NaviServer/app/db/inavi_db.sqlite'
+# SQLALCHEMY_POOL_SIZE = 100
+# SQLALCHEMY_MAX_OVERFLOW = -1
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+sqlite://// 绝对路径
+sqlite:/// 相对路径
+
+
+7.在增加和更新数据时，有时候前端传回的数据比自己想要的数据要多，
+因此要提想要的数据
+def getdata(self, request_data):
+        dict2 = {"srv_id": "", "srv_url": "", "srv_code": "", "srv_name": "", "srv_describe": "", "srv_git_url": "",
+                 "srv_use": "", "srv_status": "",
+                 "srv_visible": ""}
+        for d1 in request_data.keys():
+            if d1 in dict2.keys():
+                dict2[d1] = request_data[d1]
+        return dict2
+dict2就是自己想要的数据格式。从传回的数据提取，找到对应的键值写入，无关数据不予理会
+
+sqlite绝对路径随机迁移：
+basedir= os.path.abspath(os.path.dirname(__file__))　　#获取当前文件的绝对路径
+'sqlite:///'+ os.path.join(basedir,'data.sqlite')
+
+

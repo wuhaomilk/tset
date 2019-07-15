@@ -1,0 +1,37 @@
+1.string.capitalize()：把字符串的第一个字符大写
+
+2。string.count(str, beg=0, end=len(string))
+返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数
+
+3.string.find(str, beg=0, end=len(string))
+检测 str 是否包含在 string 中，如果 beg 和 end 指定范围，则检查是否包含在指定范围内，如果是返回开始的索引值，否则返回-1
+4.string.join(seq)
+以 string 作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串
+
+5.string.lower()
+转换 string 中所有大写字符为小写.
+
+6.string.lstrip()
+截掉 string 左边的空格
+
+7.string.replace(str1, str2,  num=string.count(str1))
+把 string 中的 str1 替换成 str2,如果 num 指定，则替换不超过 num 次.
+
+8.string.split(str="", num=string.count(str))
+以 str 为分隔符切片 string，如果 num 有指定值，则仅分隔 num+ 个子字符串
+
+9.string.swapcase()
+翻转 string 中的大小写
+
+10.string.title()
+返回"标题化"的 string,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())
+
+11.string.upper()
+转换 string 中的小写字母为大写
+
+
+
+
+
+
+

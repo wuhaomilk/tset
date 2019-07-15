@@ -1,0 +1,54 @@
+导入模块
+from PIL import ImageDraw, Image, ImageFont
+
+新建一张图片
+Image.new(mode, size, color=0)
+bg_im = Image.new('RGB', (100，100), color="white")
+
+画图，将新建立的图画出
+ImageDraw.Draw(im, mode=None)
+draw = ImageDraw.Draw(bg_im)
+
+打开已经存在图片
+PIL.Image.open(fp, mode='r')
+im = Image.open("image.png")
+
+将一张图粘贴到另一张图上
+Image.paste(im, box=None, mask=None)
+bg_im.paste(im, (abs(xmin) + IMAGE_OFFSET, abs(ymin) + IMAGE_OFFSET))
+
+划线
+ImageDraw.ImageDraw.line(xy, fill=None, width=0, joint=None)
+xy:2-tuples like [(x, y), (x, y), ...] or like [x, y, x, y, ...]
+
+划多边形
+ImageDraw.ImageDraw.polygon(xy, fill=None, outline=None)
+xy:2-tuples like [(x, y), (x, y), ...] or like [x, y, x, y, ...]
+
+画矩形
+ImageDraw.ImageDraw.rectangle(xy, fill=None, outline=None, width=0)
+xy:2-tuples like [(x, y), (x, y), ...] or like [x, y, x, y, ...]
+
+添加文本
+ImageDraw.ImageDraw.text(xy, text, fill=None, font=None, anchor=None, 
+spacing=0, align="left", direction=None, features=None, language=None)
+align：If the text is passed on to multiline_text(), “left”, “center” or “right”.
+
+保存图片
+bg_im.save(path)
+
+画三角形，新建MyDraw类继承Imageraw,新增成员函数
+    def isotriangle(self, xy, r, a=0, b=40, outline=None, fill=None):
+        x, y = xy
+        # a: 顶点方向
+        # b: 顶点角度
+        a, b = a * pi / 180, b * pi / 180  # 角度转弧度
+        x1, y1 = x + cos(a) * r, y + sin(a) * r
+        x2, y2 = x + cos(pi + a - b) * r, y + sin(pi + a - b) * r
+        x3, y3 = x + cos(pi + a + b) * r, y + sin(pi + a + b) * r
+        self.polygon((x1, y1, x2, y2, x3, y3), outline=outline, fill=fill)
+	
+
+
+
+

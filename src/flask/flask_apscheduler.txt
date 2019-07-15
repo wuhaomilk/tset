@@ -1,0 +1,29 @@
+https://github.com/viniciuschiele/flask-apscheduler/blob/master/examples/jobs.py
+
+1.flask_apscheduler //定时模块
+//安装
+pip install Flask-APScheduler 
+//配置
+SCHEDULER_API_ENABLED = True
+JOBS = [
+        {
+            'id': 'job_1h_data',  //任务的唯一ID，不要冲突
+            'func': job_1h_data, //定时执行的函数
+            'args': '',
+            'trigger': {
+                'type': 'cron',
+                'day_of_week': "0-6",
+                'hour': '*',  //小时
+                'minute': '1', //分钟
+                'second': '0'
+            }
+
+		}
+	]
+//初始化
+ scheduler = APScheduler()
+ scheduler.init_app(app)
+ scheduler.start()
+
+
+注意：

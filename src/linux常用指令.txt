@@ -1,0 +1,52 @@
+git clone git@igitlab.iauto.com:chaiyu/Spec2DB.git  //拉代码
+git clone -b brance_name git@igitlab.iauto.com:hongcz/koala.git //获取分支代码
+
+修改.ssh文件使之重新生效：ssh-add
+
+ssh name@ip  //访问其他服务器
+
+mv filename filename.bak // 备份文件
+
+sudo pip3 install -r koala_server/requirements.txt  //添加模块
+lsof -i :5000 //查看端口号
+杀死进程： 
+kill -9 PID # PID是进程号,查看进程时会显示，比如23645
+ps aux查看进程
+
+chmod [ugoa][+-=][rwx] [文件或目录] //修改权限
+eg:chmod a-x test1
+
+pgAdmin数据库相关操作
+python manager.py db init # 初始化
+python manage.py db migrate # 相当于Django的ORM的makemigrations
+python manage.py db upgrade # 相当于Django的ORM的migrate
+
+增加绘制图片
+curl -XDELETE 192.168.25.69:15000/server/del/1
+curl -h来查看请求参数的含义 
+-v 显示请求的信息 
+-X 选项指定其它协议
+get:
+    curl -v 192.168.33.1:8080/girls/age/18
+post:
+    curl -v 192.168.33.1:8080/girls -d 'age=14&cupSize=C'
+    curl -v -X POST 192.168.33.1:8080/girls -d 'age=14&cupSize=C'
+put:
+    curl -v -X PUT -d "age=19&cupSize=C" 192.168.33.1:8080/girls/3
+delete:
+    curl -v -X DELETE 192.168.33.1:8080/girls/3
+
+scp [可选参数] file_source file_target 
+ scp local_file remote_username@remote_ip:remote_folder
+
+linux 本地文件上传到服务器
+scp /home/liujia/file.1txt  liujia@172.16.252.32:/user/liujia
+从服务器下载文件
+scp liujia@172.16.252.32:/user/liujia/file1.txt /home/liujia
+scp报错：not a regular file
+解决办法是 加参数 -r 
+ 
+
+ #有多个gcc/g++时切换版本：
+   sudo update-alternatives --config gcc
+   sudo update-alternatives --config g++

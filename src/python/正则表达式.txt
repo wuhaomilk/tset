@@ -1,0 +1,75 @@
+1.正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），
+  可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等
+  
+2.特殊字符,若要使用本身，则使用转义字符\
+$：匹配输入字符串的结尾位置
+():标记一个子表达式的开始和结束位置
+*：匹配前面的表达式零次或多次
++：匹配前面的表达式1次或多次
+.：匹配出换行\n之外的任何单字符
+[:标记一个中括号表达式的开始
+?:匹配前面的子表达式零次或一次
+^:	匹配输入字符串的开始位置
+{:标记限定符表达式的开始
+|:	指明两项之间的一个选择
+{n}:匹配确定的 n 次
+{n,}:至少匹配n 次
+{n,m}:最少匹配 n 次且最多匹配 m 次
+\d:匹配一个数字字符。等价于 [0-9]
+\D:	匹配一个非数字字符。等价于 [^0-9]
+\s:匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]
+\S:匹配任何非空白字符。等价于 [^ \f\n\r\t\v]
+\w:	匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'
+\W:	匹配任何非单词字符。等价于 '[^A-Za-z0-9_]
+
+3.定位符
+\b:匹配一个单词边界，即字与空格间的位置。
+\B:非单词边界匹配。
+例如：Chapter字符串 
+/\bcha/,匹配开头为cha的字符串
+/\Bapt/,匹配apt不出现在边界的字符串
+
+4.match||search
+Python提供了两种不同的原始操作：match和search。
+match是从字符串的起点开始做匹配，而search（perl默认）是从字符串做任意匹配
+re.match(pattern, string, flags=0) //匹配成功re.match方法返回一个匹配的对象，否则返回None
+re.match().group()//获取匹配的字符串
+re.match().span()//获取匹配到的字符串的起始位置
+re.match().start()//获取分组匹配的子串在整个字符串中的起始位置
+re.match().end()//获取分组匹配的子串在整个字符串中的结束位置
+
+5.re.sub(pattern, repl, string, count=0) //检索与替换
+
+str = "3636eg35b6b36"
+patt1 ="36*"
+nu = re.sub(patt1, "ab", str)
+print(nu)
+
+输出：ababegab5b6bab
+
+
+6.re.compile(pattern[, flags])
+compile 函数用于编译正则表达式，
+生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 使用
+
+7.findall(string[, pos[, endpos]])
+在字符串中找到正则表达式所匹配的所有子串，并返回一个列表
+pattern = re.compile(r'\d+')   # 查找数字
+result1 = pattern.findall('runoob 123 google 456')
+输出：['123', '456']
+
+8.re.split(pattern, string[, maxsplit=0, flags=0])
+maxsplit：分隔次数，maxsplit=1 分隔一次，默认为 0，不限制次数。
+
+>>> re.split('\W+', 'runoob, runoob, runoob.')
+['runoob', 'runoob', 'runoob', '']
+
+
+
+
+
+
+
+
+
+

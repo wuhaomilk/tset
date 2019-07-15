@@ -1,0 +1,4 @@
+指定源，安装包
+pip install 包名 -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
+sudo pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-16.04 wxPython

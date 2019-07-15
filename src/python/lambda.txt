@@ -1,0 +1,31 @@
+1.lambda表达式
+  形式：[caputer](parameters)mutable->return-type{statement}
+  caputer：捕捉列表，[]lambda引出符，捕捉列表能够捕捉上下文中的变量以提供lamdba使用
+  parameters：参数列表，如不需传递参数，则可连()一起省略
+  mutable:默认情况，lambda函数总是一个const函数。mutable可以取消其常量性，使用该修饰符时，参数列表不可省略
+  ->return-type:返回类型，
+  statement；函数体
+  
+  捕捉列表的几种形式:
+  []: 未定义变量，试图在lamdba内使用任何外部变量都是错误的
+  [var]；值传递方式捕获变量var
+  [=]：值传递方式捕捉所有父作用域的变量（包括this）
+  [&var]: 引用方式捕捉变量var
+  [&]：引用传递方式捕捉所有父作用域的变量（包括this） 
+  [=,&a,&b]:引用方式捕获变量a和b，值传递方式捕捉其他所有变量
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

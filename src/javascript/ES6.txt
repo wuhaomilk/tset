@@ -1,0 +1,109 @@
+1.let 
+  声明变量，具有块级作用
+  不存在变量提升，要先定义后使用，否则报错
+  暂时性死区，存在全局变量tmp,但在块级作用域用let又声明一个tmp,块级作用域变量覆盖全局变量
+  不允许在相同作用域内，重复声明同一个变量
+  
+2.const
+  作用域和let作用域相同
+  定义时要初始化，后面不可修改
+  
+3.字符串的扩展
+  字符串for..of循环遍历：for(let codePoint of 'of'){console.log(codePoint)}
+  at:返回字符串给定位置的字符，'abc'.at(0) =>"a"
+  includes:是否找到参数字符串
+  startsWith:表示字符串是否在原字符串的头部
+  endsWith:表示参数字符串是否在源字符串的尾部
+  repeat:返回一个新的字符串，表示将原来字符串重复n次
+  padStart:头部补全 'x'.padStart(5, 'ab') // 'ababx'   'x'.padStart(4, 'ab') // 'abax
+  padEnd:尾部补全  'x'.padEnd(5, 'ab') // 'xabab'    'x'.padEnd(4, 'ab') // 'xaba'
+  
+  模板字符串：用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量
+  例如：// 普通字符串`In JavaScript '\n' is a line-feed.`
+
+        // 多行字符串`In JavaScript this is  所有空格缩进都保留在输出中
+						not legal.`
+	// 字符串中嵌入变量var name = "Bob", time = "today";
+
+						`Hello ${name}, how are you ${time}?`
+4.数值的扩展
+  Math.trunc:方法用于去除一个数的小数部分，返回整数部分。
+			对于非数值来说，它内部调用Number方法将其转换为数值
+			对于空值和无法截取整数的值，返回NaN
+  Math.sign:用来判断一个数到底是正数、负数、还是零
+  Math.cbrt:计算一个数的立方根
+  
+5.数组的扩展
+  Array.form:将两类对象转换为真正的数组。类似数组的对象和可遍历的对象《=》[].slice.call(obj)
+  Array.of:将一组值转换为数组
+  Array.copyWithin(target, start = 0, end = this.length)，会改变原数组
+    target:必需，从该位置开始替换数据
+	start：可选，从该位置开始读取数据，默认为0，负数表示倒数
+	end:可选，到该位置前停止读取数据，默认等于数组长度，负值表示倒数
+  Array.find:用于找到第一个符合条件的数组成员，参数是回调函数
+  Array.fill:使用给定值，填充一个数组
+  Array.includes:表示某个数组是否包含给定值，返回一个布尔值
+  数组的空位：某一位置没有任何值，ES6把空位看作是undefined
+
+6.函数的扩展
+  1.允许函数参数设置默认值，函数体内不能用了let或const对参数进行再次声明
+  2.length属性：返回没有指定默认值的参数的个数
+  3.作用域：先当前函数作用域，然后才是全局作用域
+  3.rest参数（形式为“...变量名”），rest参数搭配的变量是一个数组
+  4.扩展运算符（spread）是三个点“...”,将数组转换为你用逗号分隔的参数序列
+    eg:console.log(...[1, 2, 3])   // 1 2 3
+	（1）合并数组 // ES5：[1, 2].concat(more)  // ES6：[1, 2, ...more]
+	（2）与解构赋值结合，生成数组：const [first, ...rest] = [1, 2, 3, 4, 5];   first // 1  rest  // [2, 3, 4, 5]
+		注意：如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错
+    （3）字符串，将字符串转换为真正数组 [...'hello']  // [ "h", "e", "l", "l", "o" ]
+  5.箭头函数（=>）:var f = () => 5; 等同于  var f = function () { return 5 };
+  箭头函数让函数中的this，绑定定义时所在作用域，而不是指向运行时所在作用域
+  箭头函数没有自己的this
+  尾递归：尾调用自身，复杂度O(1)，例如fibonacci 数列
+  柯里化：将多参函数转换为单参函数
+
+7.对象的扩展 
+  1.Object.is() //比较两个值是否严格相等 Object.is('foo', 'foo')//true
+  2.Object.assign()//用于对象的合并，将源对象所有可枚举属性，复制到目标对象，
+                 Object.assign(target, source1, source2);
+				 如果有同名属性，后面属性覆盖前面属性，实行浅拷贝
+        （1）为对象添加属性
+		（2）为对象添加方法
+		（3）克隆对象
+
+8.Generator函数
+  1.提供异步编程解决方案
+  2.特征：function关键字与函数名之间有星号，函数内部使用yeild语句
+  3.Generator函数返回一个遍历器对象，代表函数内部指针，只有调用next方法才会遍历下一状态
+  4.yield语句，暂停标志，普通函数不能包含yeild语句，yeild语句在一个表达式中，必须放在表达式中
+  5.setTimeout:指定毫秒后执行函数
+    setTimeout(function(){alert("hello");},3000) //3秒后执行function函数
+  6.next方法参数;next方法可以带一个参数，该参数就会被当作上一个yeild语句的返回值
+  7.for...of循环：自动遍历Generator函数生成的Iterator对象，不用调用next方法
+    done属性为true，循环就会结束终止
+	eg: function* fibonacci(){
+			let [prev,curr] = [0,1];
+			for(;;){
+			  [prev,curr] = [curr,prev + curr];
+			  yield curr;
+			}
+		}
+		for(let n of fibonacci()){
+			if(n>1000)break;
+			console.log(n);
+		}
+	for...of循环，可以遍历出任意对象的方法，只需通过Generator函数为它添加接口
+	eg:function* objectEntries(obj){
+		  let proKeys = Reflect.ownKeys(obj);
+		  for(let proKey of proKeys){
+			yield [proKey,obj[proKey]];
+		  }
+		}
+		let jane = { first: 'Jane', last: 'Doe' };
+		for (let [key, value] of objectEntries(jane)) {
+		  console.log(`${key}: ${value}`);
+		}
+	8.yield*：一个Generator函数里执行另一个Generator函数
+
+  
+  

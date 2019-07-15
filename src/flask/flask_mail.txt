@@ -1,0 +1,44 @@
+http://www.pythondoc.com/flask-mail/index.html
+
+1.配置
+MAIL_SERVER : 默认为 ‘localhost’
+MAIL_PORT : 默认为 25
+MAIL_USE_TLS : 默认为 False
+MAIL_USE_SSL : 默认为 False
+MAIL_DEBUG : 默认为 app.debug
+MAIL_USERNAME : 默认为 None
+MAIL_PASSWORD : 默认为 None
+MAIL_DEFAULT_SENDER : 默认为 None
+MAIL_MAX_EMAILS : 默认为 None
+MAIL_SUPPRESS_SEND : 默认为 app.testing
+MAIL_ASCII_ATTACHMENTS : 默认为 False
+
+2.初始化
+from flask import Flask
+from flask_mail import Mail
+
+app = Flask(__name__)
+mail = Mail(app)
+
+3.发送邮件
+from flask_mail import Message
+
+msg = Message("Hello",
+               sender="from@example.com",
+               recipients=["to@example.com"])
+			   
+4.发送邮件的主体
+msg.body = "testing"
+msg.html = "<b>testing</b>"
+
+5.发送邮件
+mail.send(msg)
+
+
+
+
+
+
+
+
+

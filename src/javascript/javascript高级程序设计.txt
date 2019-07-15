@@ -1,0 +1,164 @@
+1.for-in语句
+  for-in语句是一种精准的迭代语句，可以用来枚举对象的属性
+  for (property in expression) statement 
+  exmple:for (var propName in window) { 
+			  document.write(propName); 
+         } 
+
+2.块级作用域
+  if 和for 语句，没有块级作用域。if 语句中的变量声明会将变量添加到当前的执行环境
+3.数组
+  转换：toString:返回以逗号为分割的字符串
+        valueOf:返回的还是数组
+  栈方法：push,pop
+  队列方法：push,shift(取得第一项)，unshift(组数组前端推入)
+  重排序方法：reverse,
+    sort：默认将数组的每一项进行tostring转换，在进行从小到大排序
+	sort可以接收一个比较函数作为参数，
+  操作方法:splice:删除：指定两个参数，要删除的第一项的位置和要删除的项数。
+			例如，splice(0,2)会删除数组中的前两项。
+		插入：可以向指定位置插入n项，3个参数：起始位置，要删除的项数，要插入的项
+			例如：splice(2,0,"red","green")
+		替换：可以向指定位置插入任意数量的项，且同时删除任意数量的项，
+		    3 个参数：起始位置、要删除的项数和要插入的任意数量的项
+			例如：splice (2,1,"red","green")
+  位置方法：indexof
+  迭代方法:每个方法都接收两个参数：要在每一项上运行的函数和（可选的）运行该函数的作用域对象——————影响 this 的值。
+			传入这些方法中的函数会接收三个参数：数组项的值、该项在数组中的位置和数组对象本身
+    every:对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true
+	some:对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true
+	filter:对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组
+	forEach:对数组中的每一项运行给定函数。这个方法没有返回值
+	map:对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组
+  归并方法：reduce,reduceRight
+4.RegExp类
+  var expression = / pattern / flags ; 
+  flags:g：全局模式；i：不区分大小写模式；m:多行模式
+5.Object类
+  生成Object实例的方法：new操作符加构造函数，字面量法
+6.Function类
+  5.1 没有重载：
+  5.2 函数内部属性:arguments 和 this
+  5.3函数的属性和方法：length和prototype
+    length:函数希望接受参数的个数
+	prototype 属性是不可枚举的，因此使用 for-in 无法发现
+7.String：(原始字符串不变)
+  7.1.字符方法charAt()和 charCodeAt()
+    charAt()方法以单字符字符串的形式返回给定位置的那个字符《==》方括号加数字索引
+  7.2字符串操作方法
+    concat:将一个或多个字符串连接到一起，返回一个新的字符串
+	slice：接受一或两个参数，返回操作字符串的一个字串（第一参数指定开始位置，第二参数指定结束位置）
+	substring:接受一或两个参数，返回操作字符串的一个字串（第一参数指定开始位置，第二参数指定结束位置）
+	substr:接受一或两个参数，返回操作字符串的一个字串(第一参数指定开始位置，第二参数返回字符个数)
+  7.3字符串位置方法
+    indexOf:从字符串的开头向后搜索子字符串,然后返子字符串的位置 
+  7.4trim:创建字符串副本，删除前缀和后缀的所有空格
+  7.5字符串大小写转换：toLowerCase()、toLocaleLowerCase()、toUpperCase()和 toLocaleUpperCase()。
+  7.6字符串模式匹配法：match,接收参数（正则表达式或RegExp对象）
+  7.7localeCompare:比较两个字符串，返回{大于=1，等于=0，小于=-1}
+  7.8fromCharCode:这个方法的任务是接收一或多个字符编码，然后将它们转换成一个字符串
+8.Math
+  Math.ceil()执行向上舍入，即它总是将数值向上舍入为最接近的整数；
+Math.floor()执行向下舍入，即它总是将数值向下舍入为最接近的整数；
+Math.round()执行标准舍入，即它总是将数值四舍五入为最接近的整数;
+  Math.random()方法返回大于等于 0 小于 1 的一个随机数
+  
+*****************************面向对象的程序设计************************************************************
+1.创建对象
+  1.1构造函数发法和字面量法
+    eg:function Person(name, age, job){ 
+		   this.name = name; 
+		   this.age = age; 
+		   this.job = job; 
+		   this.sayName = function(){ 
+		       alert(this.name); 
+		   }; 
+	  } 
+	var person1 = new Person("Nicholas", 29, "Software Engineer"); 
+	var person2 = new Person("Greg", 27, "Doctor");
+  1.2工厂模式：用函数来封装以特定接口创建对象的细节
+    eg: function createperson(name,age,job){
+			var o = new Object();
+			o.name = name;
+			o.age = age;
+			o.job = job;
+			o.sayName = function(){alert(this.name);}
+			return o;
+		p1 = createperson("zhangsan",29,"student");
+		p2 = createperson("wanger",33,"teacher");
+    
+  1.3原型模式:好处是可以让所有对象实例共享它所包含的属性和方法
+    不能通过对象实例重写原型中的值，但通过添加一个与原型中同名的属性，则该属性会覆盖原型中的那个属性
+	原型与in操作符：只要对象能访问到属性就返回true
+	hasOwnProperty：只有属性存在于实例中在返回true
+	Object.keys():返回一个包含所有可枚举属性的字符串数组
+	问题：不同实例有些属性不需要共享，但原型模式下属性共享
+	
+  1.4组合使用构造函数模式和原型模式
+    不需共享的属性通过构造函数实现，共享的用原型模式
+	
+  1.5动态原型模式
+  
+2.继承：js目前支持实现继承，依靠原型链来实现
+  2.1原型链：基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法
+  注意：通过原型链继承，不能使用对象字面量创建原型方法，因为此行为会重写原型链
+  问题：1)不能向超类中传递参数 2）共享问题
+  2.2借用构造函数：在子类的构造函数调用超类的构造函数
+    1）可以向超类传递参数
+  2.3组合继承
+  2.4原型式继承
+
+**************************函数表达式*************************************************  
+1.递归，使用命名表达式
+	var factorial = (function f(num){ 
+	  if (num <= 1){ 
+	  return 1; 
+	  } else { 
+	  return num * f(num-1); 
+	  } 
+	}); 
+2.闭包：是指有权访问另一个函数作用域中的变量的函数
+  创建闭包的常见方式，就是在一个函数内部创建另一个函数
+
+3.私有变量
+  定义：函数的参数，局部变量，函数内部定义的其他函数
+***************************BOM***************************************
+1.window对象：js访问浏览器的一个接口，ECMAscript规定的对象
+  1.1全局作用域：在全局作用域中声明的变量，函数都会编程window对象的属性和方法
+  1.2窗口关系及框架
+	页面包含框架，则每个框架都有自己的window对象，并且保存在frames集合中。
+	通过windoe.frames[index]或top.frames[index]获取框架，top始终指向最外层框架
+  1.3间歇调用和超时调用
+    超时调用：setTimeout参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）
+	eg: var id = setTimeout(function(){alert("hello")},1000) 返回一个ID，取消使用clearTimeout(id)
+    间歇调用：setInterval参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）
+	eg;var id = setInterval (function(){alert("hello")},6000) 返回一个ID，取消使用 clearInterval((id)
+  1.4系统对话框：alert(),confirm(),prompt(),
+
+2.location对象：提供当前窗口中加载文档有关的信息，还提供一些导航功能
+  属性： hash,host,hostname,href,pathname,port,protocal,search
+  方法：assign,reload,replace
+  
+*********************************事件********************************************
+1.js与HTML之间的交互是通过事件实现的
+2.事件类型
+UI事件：
+    load：当对象加载完成后触发
+	unload:当对象完全御卸后触发（个人理解退出或释放）
+	abort：停止下载过程中，嵌入的内容没有加载完
+	error:发生错误
+	select:用户选择文本框
+	resize:窗口或框架大小发生变化
+	scroll:用户滚动带有滚动条的元素
+焦点事件:在页面元素获得或失去焦点时触发
+    blur:元素失去焦点触发，不冒泡
+	focus:元素获得焦点触发，不冒泡
+	focusin:元素获得焦点触发，冒泡
+	focusout:元素失去焦点触发，冒泡
+鼠标与滚轮事件：
+    click:在用户单击主鼠标按钮（一般是左边的按钮）或者按下回车键时触发
+	dbclick:在用户双击主鼠标按钮（一般是左边的按钮）时触发
+	mousedown:在用户按下了任意鼠标按钮时触发。不能通过键盘触发这个
+	mouseenter:在鼠标光标从元素外部首次移动到元素范围之内时触发。
+	
+	

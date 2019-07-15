@@ -1,0 +1,10 @@
+ls: 列出目录
+cd：切换目录
+pwd：显示目前的目录
+mkdir：创建一个新的目录
+rmdir：删除一个空的目录
+cp: 复制文件或目录 -i检测是否覆盖
+rm: 移除文件或目录
+mv: 移动文件与目录、文件重命名
+scp:远程拷贝
+scp root@www.w3cschool.cn:/home/root/others/music /home/space/music/1.mp3 

@@ -1,0 +1,17 @@
+[
+  {
+    "position":"A1:B1",
+    "font":"Meiryo UI",
+    "fontSize":10,
+    "isMerge":true,
+    "isBold":false,
+    "boderLeft":"thin,1"
+  },
+  {
+    "position":"A2:B2",
+    "font":"Meiryo UI",
+    "fontSize":10,
+    "isMerge":true,
+    "isBold":true
+  }
+]

@@ -1,0 +1,43 @@
+获取repo：
+   git clone ssh://igerrit.storm:29418/tools/repo.git
+   cd repo
+   git checkout -b stable origin/stable
+   sudo ln repo /usr/bin/repo
+取代码
+在工作目录下
+
+   repo init -u ssh://igerrit.storm:29418/Src/iAutoPlatform/iAuto3/manifest
+   repo sync
+
+
+repo指令：
+repo sync [project] 下载最新本地工作文件，同步 repository 中的代码。 
+可以指定需要更新的project ，如果不指定任何参数，会同步整个所有的项目
+如果是第一次运行 repo sync ， 则这个命令相当于 git clone ，会把 repository 中的所有内容都拷贝到本地。
+
+
+如果不是第一次运行 repo sync ， 则相当于 更新 和 自动合并 动作；
+
+repo sync 会更新 .repo 下面的文件。
+如果在merge 的过程中出现冲突， 这需要手动运行 git rebase --continue
+repo init -u URL , 在当前目录安装 repository ，会在当前目录创建一个目录 ".repo" ， 
+-u 参数指定一个URL， 从这个URL 中取得repository 的 manifest 文件
+eg:repo init -u git://android.git.kernel.org/platform/manifest.git
+-m 可以用 -m 参数来选择 repository 中的某一个特定的 manifest 文件
+eg:repo init -u git://android.git.kernel.org/platform/manifest.git -m dalvik-plus.xml
+-b  可以用 -b 参数来指定某个manifest 分支。
+eg:repo init -u git://android.git.kernel.org/platform/manifest.git -b release-1.0
+
+repo upload[ project-list ] 上传修改的代码 
+repo diff [ project-list ] 显示提交的代码和当前工作目录代码之间的差异。
+repo start newbranchname 创建新的branch分支。 "." 代表当前工作的branch 分支
+repo prune [project list] 删除已经merge 的 project 
+repo status 显示 project 的状态
+repo forall -c command，对所有项目执行一个command命令，这个命令 相当 好用；
+
+
+
+编译过程：
+.build/envsetup.sh
+lunch XXXXX
+make -j <cpunum>

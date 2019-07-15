@@ -1,0 +1,67 @@
+﻿
+Ubuntu Apache2 不同端口监听不同站点
+0. 创建目录
+sudo mkdir -p /var/www/inavi
+
+1.在/etc/apache2/apache2.conf 中，把项目根目录设置成默认的/var/www 不要设置在某个站点的路径下。
+
+2.在 /etc/apache2/ports.conf 中添加监听，例如，我要添加8080端口的监听
+Listen 80
+Listen 8080
+在原有的默认80后，加上要监听的端口，就可以了。
+这是143机子的配置
+===========================================
+Listen 80
+Listen 8080
+
+<IfModule ssl_module>
+        Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+        Listen 443
+</IfModule>
+===========================================
+
+3.在/etc/apache2/site-available/ 中使用命令
+cp 000-default.conf 8080.conf
+其中 000-default是默认的那个配置文件，可能有的版本不叫这个名字，
+总之就是要把原文件复制一个新的，叫做8080为了以后站点多的时候知道这个文件对应哪个端口，
+或者你用新站点的名称也可以，总之就是要让自己知道这个文件对应的是哪个项目站点。打开8080.conf，
+改成这样：
+这是143机子的配置
+===========================================
+<VirtualHost *:8080>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/inavi
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    <Directory /var/www/inavi/>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+    </Directory>
+</VirtualHost>
+===========================================
+
+上面 重点就是端口号，还有这个端口对应的项目目录。
+
+4.使用命令:
+ sudo ln -s /etc/apache2/sites-available/8080.conf /etc/apache2/sites-enabled/8080.conf
+
+5.然后重启Apache服务器:
+  service apache2 restart
+
+/home/wuhao/wuhao3/Spec2DB/iNavi/NaviServer/requirements.txt
+
+服务器: 192.168.25.99
+系统账号：iauto
+密码: iauto123456
+前端位置：Spec2DB/iNavi/web_html
+后端：Spec2DB/iNavi/NaviServer
+
+1. 前配好Server IP和端口，编译（./build.sh）
+2. 后端配好端口，然后启动(start.py) //运行requirements.txt安装所需模块
+
+

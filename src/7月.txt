@@ -4,3 +4,9 @@
 7.9 idesign redmine项目显示后端编写
 7.10-7.12 新人入职培训
 7.15 ：学习git基础知识，并且在github新建仓库保存笔记资料
+7.16-7.17：idesign 新建doc索引
+7.18 索引测试
+7.19 idesign 测试 postgresql
+7.22 idesign技能书导入
+7.24 idesign 技能书版本编号获取
+7.25 idesign 技能书版本编号获取

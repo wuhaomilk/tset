@@ -1,0 +1,25 @@
+1.js 数组元素去重
+  Set数据类型类似与数组，里面没有重复数据。
+  set可以接受数组或数组对象作为参数，来初始化。
+  Array.from()可以将set转化为数组
+  Array.from(new Set(arr1))
+  
+2.删除数组中指定的数据
+  首先，index= array.indexOf(val)获取这个值在数组中的下标
+  存在返回下标，不存在返回-1
+  接着，用array.splice(index,num)删除元素
+  index:开始删除的下标，num；要删除的数目
+  
+3.获取树型结构叶子节点
+  fub(root,temp_tag){ 
+        for(let i = 0; i < root.length; ++i ){
+            if(false != root[i].sub_tags){	      
+                this.fub(root[i].sub_tags,temp_tag)
+            }
+            else{
+                temp_tag.push(root[i].tag_id)            
+            }          	
+	    }
+	}
+	注意：数组有length方法，对象不一定有。判断数组为空可与false比较
+	

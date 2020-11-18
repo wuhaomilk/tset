@@ -5,3 +5,5 @@ git push origin master
 git reset --soft
 git reset --mixed
 new_branch
+
+git push origin:refs/for/master

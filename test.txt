@@ -2,3 +2,5 @@
 实际就是
 巍峨
 git push origin master
+git reset --soft
+git reset --mixed
